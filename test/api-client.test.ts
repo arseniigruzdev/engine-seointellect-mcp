@@ -41,6 +41,12 @@ describe("SEO Intellect API client", () => {
   it("recognizes common pending and ready response shapes", () => {
     expect(isPendingResponse({ status: "processing", task_id: 1 })).toBe(true);
     expect(isPendingResponse({ status: "error", msg: "Результат ещё не готов" })).toBe(true);
+    expect(
+      isReadyResponse({
+        status: "fail",
+        msg: "Задача еще не готова, ожидайте, проверяйте через метод check!",
+      }),
+    ).toBe(false);
     expect(isReadyResponse({ status: "ok", result: { value: 1 } })).toBe(true);
     expect(isReadyResponse({ status: "completed", task_id: 1 })).toBe(true);
     expect(isErrorResponse({ status: "error", msg: "Invalid input" })).toBe(true);

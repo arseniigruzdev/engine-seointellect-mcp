@@ -60,6 +60,7 @@ export function isPendingResponse(value: JsonValue): boolean {
 }
 
 export function isReadyResponse(value: JsonValue): boolean {
+  if (isPendingResponse(value)) return false;
   const object = asObject(value);
   if (!object) return false;
   if ("result" in object && object.result !== null) return true;

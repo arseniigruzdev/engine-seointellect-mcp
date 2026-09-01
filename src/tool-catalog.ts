@@ -4,6 +4,10 @@ const text = z.string().min(1);
 const textList = z.array(text).min(1);
 const id = z.union([z.string().min(1), z.number().int().nonnegative()]);
 const positiveIntLike = z.union([z.string().regex(/^\d+$/), z.number().int().positive()]);
+const ngramCount = z.union([
+  z.string().regex(/^(?:[2-9]|[1-9]\d+)$/),
+  z.number().int().min(2),
+]);
 const region = z.union([z.string().min(1), z.number().int().nonnegative()]);
 
 const controls = {
@@ -134,7 +138,7 @@ export const toolCatalog: ToolSpec[] = [
     apiTool: "lemma",
     title: "Lemmatizer",
     description: "Lemmatize text and optionally build n-grams.",
-    inputSchema: taskInput({ text, ngrammes: positiveIntLike.optional() }),
+    inputSchema: taskInput({ text, ngrammes: ngramCount.optional() }),
   },
   {
     name: "positions_multi",

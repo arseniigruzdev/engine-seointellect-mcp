@@ -1,12 +1,16 @@
 #!/usr/bin/env node
 import { createHash, timingSafeEqual } from "node:crypto";
+import { fileURLToPath } from "node:url";
 import { createMcpExpressApp, requireBearerAuth } from "@modelcontextprotocol/express";
 import type { OAuthTokenVerifier } from "@modelcontextprotocol/express";
 import { toNodeHandler } from "@modelcontextprotocol/node";
 import type { AuthInfo } from "@modelcontextprotocol/server";
 import { createMcpHandler, OAuthError, OAuthErrorCode } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
+import { config as loadEnv } from "dotenv";
 import { createSeoIntellectServer, SERVER_NAME, SERVER_VERSION } from "./server.js";
+
+loadEnv({ path: fileURLToPath(new URL("../.env", import.meta.url)), quiet: true });
 
 function envInt(name: string, fallback: number): number {
   const value = process.env[name];
