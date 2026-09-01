@@ -20,4 +20,4 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm audit --audit-level=high
-      - run: docker build -t engine-seo-intellect:test .
+      - run: docker build -t engine-seointellect-mcp:test .

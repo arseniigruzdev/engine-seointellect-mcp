@@ -3,7 +3,7 @@ import type { JsonObject, JsonValue } from "./api-client.js";
 import { SeoIntellectApiError, SeoIntellectClient } from "./api-client.js";
 import { toolCatalog } from "./tool-catalog.js";
 
-export const SERVER_NAME = "engine-seo-intellect";
+export const SERVER_NAME = "engine-seointellect-mcp";
 export const SERVER_VERSION = "0.1.0";
 
 export interface ServerOptions {

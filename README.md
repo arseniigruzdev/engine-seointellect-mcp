@@ -54,8 +54,8 @@ When a task outlives the timeout, the response contains `task_id`. Pass only tha
 ## Local setup (stdio)
 
 ```bash
-git clone https://github.com/arseniigruzdev/engine-seo-intellect.git
-cd engine-seo-intellect
+git clone https://github.com/arseniigruzdev/engine-seointellect-mcp.git
+cd engine-seointellect-mcp
 npm ci
 npm run build
 ```
@@ -78,9 +78,9 @@ npm start
 Codex supports both stdio and Streamable HTTP MCP servers. Keep the token in the process environment and allow Codex to forward it instead of writing it into `config.toml`:
 
 ```toml
-[mcp_servers.engine-seo-intellect]
+[mcp_servers.engine-seointellect-mcp]
 command = "node"
-args = ["C:/absolute/path/to/engine-seo-intellect/dist/index.js"]
+args = ["C:/absolute/path/to/engine-seointellect-mcp/dist/index.js"]
 env_vars = ["SEOINTELLECT_API_TOKEN"]
 tool_timeout_sec = 180
 default_tools_approval_mode = "writes"
@@ -110,7 +110,7 @@ Endpoints:
 Remote Codex configuration:
 
 ```toml
-[mcp_servers.engine-seo-intellect]
+[mcp_servers.engine-seointellect-mcp]
 url = "https://mcp.example.com/mcp"
 bearer_token_env_var = "SEOINTELLECT_API_TOKEN"
 tool_timeout_sec = 180
@@ -120,13 +120,13 @@ default_tools_approval_mode = "writes"
 ### Docker
 
 ```bash
-docker build -t engine-seo-intellect .
+docker build -t engine-seointellect-mcp .
 docker run --rm -p 3000:3000 \
   -e MCP_TRANSPORT=http \
   -e HOST=0.0.0.0 \
   -e MCP_HTTP_AUTH_MODE=byok \
   -e MCP_ALLOWED_HOSTS=localhost \
-  engine-seo-intellect
+  engine-seointellect-mcp
 ```
 
 For Coolify or Dokploy:

@@ -1,5 +1,5 @@
 services:
-  engine-seo-intellect:
+  engine-seointellect-mcp:
     build: .
     restart: unless-stopped
     ports:

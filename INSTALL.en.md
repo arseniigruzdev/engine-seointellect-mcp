@@ -13,8 +13,8 @@ Engine SEO Intellect is an independent open-source adapter that exposes all 22 E
 ## Installation
 
 ```bash
-git clone https://github.com/arseniigruzdev/engine-seo-intellect.git
-cd engine-seo-intellect
+git clone https://github.com/arseniigruzdev/engine-seointellect-mcp.git
+cd engine-seointellect-mcp
 npm ci
 npm run build
 ```
@@ -44,13 +44,13 @@ SEOINTELLECT_API_TOKEN=your-token
 Add the built server as a stdio MCP server:
 
 ```bash
-codex mcp add engine-seo-intellect -- node /absolute/path/engine-seo-intellect/dist/index.js
+codex mcp add engine-seointellect-mcp -- node /absolute/path/engine-seointellect-mcp/dist/index.js
 ```
 
 On Windows:
 
 ```powershell
-codex mcp add engine-seo-intellect -- node C:/absolute/path/engine-seo-intellect/dist/index.js
+codex mcp add engine-seointellect-mcp -- node C:/absolute/path/engine-seointellect-mcp/dist/index.js
 ```
 
 Verify the configuration:
@@ -64,9 +64,9 @@ Restart Codex after adding the server. The server loads the API token from the l
 Alternative manual `~/.codex/config.toml` configuration:
 
 ```toml
-[mcp_servers.engine-seo-intellect]
+[mcp_servers.engine-seointellect-mcp]
 command = "node"
-args = ["C:/absolute/path/engine-seo-intellect/dist/index.js"]
+args = ["C:/absolute/path/engine-seointellect-mcp/dist/index.js"]
 tool_timeout_sec = 180
 default_tools_approval_mode = "writes"
 ```
@@ -84,13 +84,13 @@ The process communicates over stdio and does not open a network port.
 Use BYOK mode for a public deployment: every caller supplies their own Engine SEO Intellect token and the server does not persist it.
 
 ```bash
-docker build -t engine-seo-intellect .
+docker build -t engine-seointellect-mcp .
 docker run --rm -p 3000:3000 \
   -e MCP_TRANSPORT=http \
   -e HOST=0.0.0.0 \
   -e MCP_HTTP_AUTH_MODE=byok \
   -e MCP_ALLOWED_HOSTS=mcp.example.com \
-  engine-seo-intellect
+  engine-seointellect-mcp
 ```
 
 Remote endpoint: `https://mcp.example.com/mcp`.
@@ -98,7 +98,7 @@ Remote endpoint: `https://mcp.example.com/mcp`.
 Remote Codex configuration:
 
 ```toml
-[mcp_servers.engine-seo-intellect]
+[mcp_servers.engine-seointellect-mcp]
 url = "https://mcp.example.com/mcp"
 bearer_token_env_var = "SEOINTELLECT_API_TOKEN"
 tool_timeout_sec = 180
