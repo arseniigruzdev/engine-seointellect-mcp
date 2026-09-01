@@ -1,5 +1,7 @@
 # SEO Intellect MCP
 
+[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (партнерская)
+
 [Русская инструкция](INSTALL.ru.md) · [English installation guide](INSTALL.en.md)
 
 Open-source MCP server for the complete [SEO Intellect](https://engine.seointellect.ru/api) API surface. One MCP server exposes 22 SEO tools and handles the upstream asynchronous task lifecycle (`set` → `check` → `get`).
