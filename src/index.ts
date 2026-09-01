@@ -38,7 +38,7 @@ function requireEnv(name: string): string {
   return value;
 }
 
-const pollIntervalMs = envInt("SEOINTELLECT_POLL_INTERVAL_MS", 2_000);
+const pollIntervalMs = envInt("SEOINTELLECT_POLL_INTERVAL_MS", 15_000);
 const resultTimeoutMs = envInt("SEOINTELLECT_RESULT_TIMEOUT_MS", 120_000);
 
 function startStdio(): void {

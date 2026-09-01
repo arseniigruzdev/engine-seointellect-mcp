@@ -2,6 +2,7 @@ import * as z from "zod/v4";
 
 const text = z.string().min(1);
 const textList = z.array(text).min(1);
+const textListMin2 = z.array(text).min(2);
 const id = z.union([z.string().min(1), z.number().int().nonnegative()]);
 const positiveIntLike = z.union([z.string().regex(/^\d+$/), z.number().int().positive()]);
 const ngramCount = z.union([
@@ -115,7 +116,7 @@ export const toolCatalog: ToolSpec[] = [
     title: "Keyword clustering",
     description: "Cluster a semantic core using search-result overlap.",
     inputSchema: taskInput({
-      keywords: textList,
+      keywords: textListMin2,
       stoplist: textList.optional(),
       positions: z.boolean().optional(),
       relpage: z.boolean().optional(),
@@ -221,12 +222,12 @@ export const toolCatalog: ToolSpec[] = [
     description: "Check strict, lemmatized, and additional keyword occurrences in text.",
     inputSchema: taskInput({
       text,
-      strict_words: textList.optional(),
-      strict_count: positiveIntLike.optional(),
-      lemma_words: textList.optional(),
-      lemma_count: positiveIntLike.optional(),
-      add_words: textList.optional(),
-      add_count: positiveIntLike.optional(),
+      strict_words: textList,
+      strict_count: positiveIntLike,
+      lemma_words: textList,
+      lemma_count: positiveIntLike,
+      add_words: textList,
+      add_count: positiveIntLike,
     }),
   },
   {

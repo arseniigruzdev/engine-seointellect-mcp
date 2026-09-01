@@ -14,6 +14,12 @@ The project supports:
 - structured tool results, input validation, polling, and resumable `task_id` values;
 - Node.js 20+, Docker, and horizontal stateless HTTP deployment.
 
+## Live API verification
+
+On September 1, 2026, 21 of the 22 tools were exercised against the live Engine SEO Intellect API with minimal inputs and returned final `status: ok` results. `site_scanner` was intentionally excluded to avoid launching a crawl. No API token or private result payload is stored in this repository.
+
+Live verification also established two upstream constraints reflected in the schemas: `clustering` requires at least two keywords, and `keywords_checker` requires all three keyword groups.
+
 > The project is an independent community integration and is not an official Engine SEO Intellect product.
 
 ## Tools

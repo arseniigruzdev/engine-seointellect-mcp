@@ -169,7 +169,7 @@ export class SeoIntellectClient {
       return { status: "pending", task_id: taskId };
     }
 
-    const pollIntervalMs = options.pollIntervalMs ?? 2_000;
+    const pollIntervalMs = options.pollIntervalMs ?? 15_000;
     const timeoutMs = options.timeoutMs ?? 120_000;
     const startedAt = Date.now();
     let lastCheck: JsonValue = null;
