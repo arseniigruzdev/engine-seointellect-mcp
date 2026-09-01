@@ -1,19 +1,19 @@
 {
-  "name": "seointellect-mcp",
+  "name": "engine-seo-intellect",
   "version": "0.1.0",
-  "description": "MCP server for all 22 SEO Intellect API tools",
-  "homepage": "https://github.com/arseniigruzdev/seointellect-mcp#readme",
+  "description": "MCP server for all 22 Engine SEO Intellect API tools",
+  "homepage": "https://github.com/arseniigruzdev/engine-seo-intellect#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arseniigruzdev/seointellect-mcp.git"
+    "url": "git+https://github.com/arseniigruzdev/engine-seo-intellect.git"
   },
   "bugs": {
-    "url": "https://github.com/arseniigruzdev/seointellect-mcp/issues"
+    "url": "https://github.com/arseniigruzdev/engine-seo-intellect/issues"
   },
   "type": "module",
   "license": "MIT",
   "bin": {
-    "seointellect-mcp": "dist/index.js"
+    "engine-seo-intellect": "dist/index.js"
   },
   "files": [
     "dist",

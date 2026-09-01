@@ -33,7 +33,7 @@ const controls = {
 };
 
 const resumeSchema = z.object({
-  task_id: id.describe("Existing SEO Intellect task to continue waiting for"),
+  task_id: id.describe("Existing Engine SEO Intellect task to continue waiting for"),
   ...controls,
 });
 

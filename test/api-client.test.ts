@@ -7,7 +7,7 @@ import {
   SeoIntellectClient,
 } from "../src/api-client.js";
 
-describe("SEO Intellect API client", () => {
+describe("Engine SEO Intellect API client", () => {
   it("submits the expected task envelope without exposing the token in the body", async () => {
     const fetchMock = vi.fn(async (_input: string | URL | Request, init?: RequestInit) =>
       new Response(JSON.stringify({ status: "ok", task_id: 42 }), {

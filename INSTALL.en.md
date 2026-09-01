@@ -1,20 +1,20 @@
 [engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (affiliate link)
 
-# Installing SEO Intellect MCP
+# Installing Engine SEO Intellect
 
-SEO Intellect MCP is an independent open-source adapter that exposes all 22 SEO Intellect API tools through one MCP server.
+Engine SEO Intellect is an independent open-source adapter that exposes all 22 Engine SEO Intellect API tools through one MCP server.
 
 ## Requirements
 
 - Node.js 20 or newer;
-- an SEO Intellect account and API token;
+- an Engine SEO Intellect account and API token;
 - an MCP client supporting stdio or Streamable HTTP.
 
 ## Installation
 
 ```bash
-git clone https://github.com/arseniigruzdev/seointellect-mcp.git
-cd seointellect-mcp
+git clone https://github.com/arseniigruzdev/engine-seo-intellect.git
+cd engine-seo-intellect
 npm ci
 npm run build
 ```
@@ -44,13 +44,13 @@ SEOINTELLECT_API_TOKEN=your-token
 Add the built server as a stdio MCP server:
 
 ```bash
-codex mcp add seointellect -- node /absolute/path/seointellect-mcp/dist/index.js
+codex mcp add engine-seo-intellect -- node /absolute/path/engine-seo-intellect/dist/index.js
 ```
 
 On Windows:
 
 ```powershell
-codex mcp add seointellect -- node C:/absolute/path/seointellect-mcp/dist/index.js
+codex mcp add engine-seo-intellect -- node C:/absolute/path/engine-seo-intellect/dist/index.js
 ```
 
 Verify the configuration:
@@ -64,9 +64,9 @@ Restart Codex after adding the server. The server loads the API token from the l
 Alternative manual `~/.codex/config.toml` configuration:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 command = "node"
-args = ["C:/absolute/path/seointellect-mcp/dist/index.js"]
+args = ["C:/absolute/path/engine-seo-intellect/dist/index.js"]
 tool_timeout_sec = 180
 default_tools_approval_mode = "writes"
 ```
@@ -81,16 +81,16 @@ The process communicates over stdio and does not open a network port.
 
 ## Docker and remote MCP
 
-Use BYOK mode for a public deployment: every caller supplies their own SEO Intellect token and the server does not persist it.
+Use BYOK mode for a public deployment: every caller supplies their own Engine SEO Intellect token and the server does not persist it.
 
 ```bash
-docker build -t seointellect-mcp .
+docker build -t engine-seo-intellect .
 docker run --rm -p 3000:3000 \
   -e MCP_TRANSPORT=http \
   -e HOST=0.0.0.0 \
   -e MCP_HTTP_AUTH_MODE=byok \
   -e MCP_ALLOWED_HOSTS=mcp.example.com \
-  seointellect-mcp
+  engine-seo-intellect
 ```
 
 Remote endpoint: `https://mcp.example.com/mcp`.
@@ -98,7 +98,7 @@ Remote endpoint: `https://mcp.example.com/mcp`.
 Remote Codex configuration:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 url = "https://mcp.example.com/mcp"
 bearer_token_env_var = "SEOINTELLECT_API_TOKEN"
 tool_timeout_sec = 180

@@ -1,24 +1,24 @@
-# SEO Intellect MCP
+# Engine SEO Intellect
 
 [engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (affiliate link)
 
 [Русская инструкция](INSTALL.ru.md) · [English installation guide](INSTALL.en.md)
 
-Open-source MCP server for the complete SEO Intellect API surface. One MCP server exposes 22 SEO tools and handles the upstream asynchronous task lifecycle (`set` → `check` → `get`).
+Open-source MCP server for the complete Engine SEO Intellect API surface. One MCP server exposes 22 SEO tools and handles the upstream asynchronous task lifecycle (`set` → `check` → `get`).
 
 The project supports:
 
 - local `stdio` transport for Codex, Claude Desktop, and other MCP hosts;
 - remote Streamable HTTP transport;
-- BYOK hosting: every remote caller supplies their own SEO Intellect token;
+- BYOK hosting: every remote caller supplies their own Engine SEO Intellect token;
 - structured tool results, input validation, polling, and resumable `task_id` values;
 - Node.js 20+, Docker, and horizontal stateless HTTP deployment.
 
-> The project is an independent community integration and is not an official SEO Intellect product.
+> The project is an independent community integration and is not an official Engine SEO Intellect product.
 
 ## Tools
 
-| MCP tool | SEO Intellect API tool | Purpose |
+| MCP tool | Engine SEO Intellect API tool | Purpose |
 |---|---|---|
 | `lsi` | `lsi` | LSI words and n-grams |
 | `seo_text` | `seo-text` | Competitor text sizes and page text |
@@ -54,8 +54,8 @@ When a task outlives the timeout, the response contains `task_id`. Pass only tha
 ## Local setup (stdio)
 
 ```bash
-git clone https://github.com/arseniigruzdev/seointellect-mcp.git
-cd seointellect-mcp
+git clone https://github.com/arseniigruzdev/engine-seo-intellect.git
+cd engine-seo-intellect
 npm ci
 npm run build
 ```
@@ -78,9 +78,9 @@ npm start
 Codex supports both stdio and Streamable HTTP MCP servers. Keep the token in the process environment and allow Codex to forward it instead of writing it into `config.toml`:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 command = "node"
-args = ["C:/absolute/path/to/seointellect-mcp/dist/index.js"]
+args = ["C:/absolute/path/to/engine-seo-intellect/dist/index.js"]
 env_vars = ["SEOINTELLECT_API_TOKEN"]
 tool_timeout_sec = 180
 default_tools_approval_mode = "writes"
@@ -90,7 +90,7 @@ The same MCP configuration is shared by Codex CLI, the IDE extension, and the Ch
 
 ## Remote hosting (Streamable HTTP)
 
-The recommended public mode is BYOK. The MCP endpoint treats the caller's bearer token as their SEO Intellect API token, forwards it only to SEO Intellect, and does not persist it.
+The recommended public mode is BYOK. The MCP endpoint treats the caller's bearer token as their Engine SEO Intellect API token, forwards it only to Engine SEO Intellect, and does not persist it.
 
 ```bash
 MCP_TRANSPORT=http \
@@ -110,7 +110,7 @@ Endpoints:
 Remote Codex configuration:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 url = "https://mcp.example.com/mcp"
 bearer_token_env_var = "SEOINTELLECT_API_TOKEN"
 tool_timeout_sec = 180
@@ -120,13 +120,13 @@ default_tools_approval_mode = "writes"
 ### Docker
 
 ```bash
-docker build -t seointellect-mcp .
+docker build -t engine-seo-intellect .
 docker run --rm -p 3000:3000 \
   -e MCP_TRANSPORT=http \
   -e HOST=0.0.0.0 \
   -e MCP_HTTP_AUTH_MODE=byok \
   -e MCP_ALLOWED_HOSTS=localhost \
-  seointellect-mcp
+  engine-seo-intellect
 ```
 
 For Coolify or Dokploy:
@@ -141,7 +141,7 @@ In BYOK mode, do **not** set `SEOINTELLECT_API_TOKEN` on the server.
 
 ## Private static-token mode
 
-Static mode uses one SEO Intellect account and therefore must not be exposed publicly. It requires a separate MCP access token:
+Static mode uses one Engine SEO Intellect account and therefore must not be exposed publicly. It requires a separate MCP access token:
 
 ```bash
 MCP_TRANSPORT=http \
@@ -158,13 +158,13 @@ npm run check
 npm audit
 ```
 
-Tests use an in-memory MCP connection and mocked SEO Intellect responses. They do not consume API limits.
+Tests use an in-memory MCP connection and mocked Engine SEO Intellect responses. They do not consume API limits.
 
 ## Security and privacy
 
 - Tokens are never logged or included in request bodies.
 - BYOK tokens are held only in memory for the current MCP request.
-- Every tool can consume SEO Intellect account limits, so all tools are marked non-read-only and non-idempotent.
+- Every tool can consume Engine SEO Intellect account limits, so all tools are marked non-read-only and non-idempotent.
 - HTTP deployment validates allowed hosts and requires bearer authentication.
 - Do not paste real tokens into issues, logs, screenshots, or committed configuration.
 

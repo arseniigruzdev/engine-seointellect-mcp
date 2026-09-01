@@ -8,7 +8,7 @@ Please report security issues privately to the repository owner instead of openi
 
 This server supports two authentication modes:
 
-- `byok`: the caller's bearer token is forwarded to SEO Intellect for the current MCP request and is not persisted;
-- `static`: a server-side SEO Intellect token is used and access is protected by a separate `MCP_ACCESS_TOKEN`.
+- `byok`: the caller's bearer token is forwarded to Engine SEO Intellect for the current MCP request and is not persisted;
+- `static`: a server-side Engine SEO Intellect token is used and access is protected by a separate `MCP_ACCESS_TOKEN`.
 
 Never expose static mode to the public internet without an additional trusted gateway and rate controls.

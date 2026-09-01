@@ -1,20 +1,20 @@
 [engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (партнерская ссылка)
 
-# Установка SEO Intellect MCP
+# Установка Engine SEO Intellect
 
-SEO Intellect MCP — независимый open-source адаптер, который предоставляет 22 инструмента API SEO Intellect через один MCP-сервер.
+Engine SEO Интеллект — независимый open-source адаптер, который предоставляет 22 инструмента API Engine SEO Intellect через один MCP-сервер.
 
 ## Требования
 
 - Node.js 20 или новее;
-- аккаунт SEO Intellect и API-токен;
+- аккаунт Engine SEO Интеллект и API-токен;
 - MCP-клиент с поддержкой stdio или Streamable HTTP.
 
 ## Установка
 
 ```bash
-git clone https://github.com/arseniigruzdev/seointellect-mcp.git
-cd seointellect-mcp
+git clone https://github.com/arseniigruzdev/engine-seo-intellect.git
+cd engine-seo-intellect
 npm ci
 npm run build
 ```
@@ -44,13 +44,13 @@ SEOINTELLECT_API_TOKEN=ваш-токен
 Добавьте собранный сервер как stdio-MCP:
 
 ```bash
-codex mcp add seointellect -- node /абсолютный/путь/seointellect-mcp/dist/index.js
+codex mcp add engine-seo-intellect -- node /абсолютный/путь/engine-seo-intellect/dist/index.js
 ```
 
 На Windows:
 
 ```powershell
-codex mcp add seointellect -- node C:/absolute/path/seointellect-mcp/dist/index.js
+codex mcp add engine-seo-intellect -- node C:/absolute/path/engine-seo-intellect/dist/index.js
 ```
 
 Проверка:
@@ -64,9 +64,9 @@ codex mcp list
 Альтернативная ручная настройка `~/.codex/config.toml`:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 command = "node"
-args = ["C:/absolute/path/seointellect-mcp/dist/index.js"]
+args = ["C:/absolute/path/engine-seo-intellect/dist/index.js"]
 tool_timeout_sec = 180
 default_tools_approval_mode = "writes"
 ```
@@ -81,16 +81,16 @@ npm start
 
 ## Docker и удалённый MCP
 
-Для публичного сервера рекомендуется BYOK-режим: каждый пользователь передаёт собственный токен SEO Intellect, а сервер его не сохраняет.
+Для публичного сервера рекомендуется BYOK-режим: каждый пользователь передаёт собственный токен Engine SEO Интеллект, а сервер его не сохраняет.
 
 ```bash
-docker build -t seointellect-mcp .
+docker build -t engine-seo-intellect .
 docker run --rm -p 3000:3000 \
   -e MCP_TRANSPORT=http \
   -e HOST=0.0.0.0 \
   -e MCP_HTTP_AUTH_MODE=byok \
   -e MCP_ALLOWED_HOSTS=mcp.example.com \
-  seointellect-mcp
+  engine-seo-intellect
 ```
 
 Удалённый endpoint: `https://mcp.example.com/mcp`.
@@ -98,7 +98,7 @@ docker run --rm -p 3000:3000 \
 Конфигурация Codex для удалённого сервера:
 
 ```toml
-[mcp_servers.seointellect]
+[mcp_servers.engine-seo-intellect]
 url = "https://mcp.example.com/mcp"
 bearer_token_env_var = "SEOINTELLECT_API_TOKEN"
 tool_timeout_sec = 180

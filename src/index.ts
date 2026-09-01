@@ -98,7 +98,7 @@ function startHttp(): void {
   const auth = requireBearerAuth({ verifier, requiredScopes: ["mcp"] });
   const handler = createMcpHandler((context) => {
     const token = staticSeoToken ?? context.authInfo?.token;
-    if (!token) throw new Error("SEO Intellect bearer token is missing");
+    if (!token) throw new Error("Engine SEO Intellect bearer token is missing");
     return createSeoIntellectServer({ token, pollIntervalMs, resultTimeoutMs });
   });
   const nodeHandler = toNodeHandler(handler);

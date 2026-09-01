@@ -93,7 +93,7 @@ export class SeoIntellectClient {
 
   constructor(private readonly options: SeoIntellectClientOptions) {
     if (!options.token.trim()) {
-      throw new Error("SEO Intellect API token is required");
+      throw new Error("Engine SEO Intellect API token is required");
     }
     this.baseUrl = (options.baseUrl ?? DEFAULT_BASE_URL).replace(/\/$/, "");
     this.fetchImpl = options.fetchImpl ?? fetch;
@@ -116,14 +116,14 @@ export class SeoIntellectClient {
       parsed = raw ? (JSON.parse(raw) as JsonValue) : null;
     } catch {
       throw new SeoIntellectApiError(
-        `SEO Intellect returned a non-JSON response (${response.status})`,
+        `Engine SEO Intellect returned a non-JSON response (${response.status})`,
         response.status,
       );
     }
 
     if (!response.ok) {
       throw new SeoIntellectApiError(
-        getMessage(parsed) || `SEO Intellect request failed (${response.status})`,
+        getMessage(parsed) || `Engine SEO Intellect request failed (${response.status})`,
         response.status,
         parsed,
       );
@@ -151,7 +151,7 @@ export class SeoIntellectClient {
     const submitted = await this.submit(tool, data);
     if (isErrorResponse(submitted)) {
       throw new SeoIntellectApiError(
-        getMessage(submitted) || "SEO Intellect rejected the task",
+        getMessage(submitted) || "Engine SEO Intellect rejected the task",
         200,
         submitted,
       );
@@ -180,7 +180,7 @@ export class SeoIntellectClient {
 
       if (isErrorResponse(lastCheck)) {
         throw new SeoIntellectApiError(
-          getMessage(lastCheck) || "SEO Intellect task failed",
+          getMessage(lastCheck) || "Engine SEO Intellect task failed",
           200,
           lastCheck,
         );
@@ -194,7 +194,7 @@ export class SeoIntellectClient {
         lastGet = await this.get(taskId);
         if (isErrorResponse(lastGet)) {
           throw new SeoIntellectApiError(
-            getMessage(lastGet) || "SEO Intellect task failed",
+            getMessage(lastGet) || "Engine SEO Intellect task failed",
             200,
             lastGet,
           );

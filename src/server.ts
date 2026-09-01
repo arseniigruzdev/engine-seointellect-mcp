@@ -3,7 +3,7 @@ import type { JsonObject, JsonValue } from "./api-client.js";
 import { SeoIntellectApiError, SeoIntellectClient } from "./api-client.js";
 import { toolCatalog } from "./tool-catalog.js";
 
-export const SERVER_NAME = "seointellect-mcp";
+export const SERVER_NAME = "engine-seo-intellect";
 export const SERVER_VERSION = "0.1.0";
 
 export interface ServerOptions {
@@ -50,7 +50,7 @@ export function createSeoIntellectServer(options: ServerOptions): McpServer {
     { name: SERVER_NAME, version: SERVER_VERSION },
     {
       instructions:
-        "SEO Intellect tools create asynchronous API tasks and may consume account limits. Each tool waits for a result by default. Set wait_for_result=false to receive task_id immediately; pass task_id to the same tool to resume polling.",
+        "Engine SEO Intellect tools create asynchronous API tasks and may consume account limits. Each tool waits for a result by default. Set wait_for_result=false to receive task_id immediately; pass task_id to the same tool to resume polling.",
     },
   );
 
@@ -59,7 +59,7 @@ export function createSeoIntellectServer(options: ServerOptions): McpServer {
       spec.name,
       {
         title: spec.title,
-        description: `${spec.description} Upstream API tool: ${spec.apiTool}. This operation may consume SEO Intellect account limits.`,
+        description: `${spec.description} Upstream API tool: ${spec.apiTool}. This operation may consume Engine SEO Intellect account limits.`,
         inputSchema: spec.inputSchema,
         annotations: {
           readOnlyHint: false,
