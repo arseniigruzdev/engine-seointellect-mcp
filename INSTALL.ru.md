@@ -1,4 +1,4 @@
-[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (партнерская)
+[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (партнерская ссылка)
 
 # Установка SEO Intellect MCP
 

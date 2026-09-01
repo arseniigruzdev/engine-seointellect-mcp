@@ -1,6 +1,6 @@
 # SEO Intellect MCP
 
-[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (партнерская)
+[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (affiliate link)
 
 [Русская инструкция](INSTALL.ru.md) · [English installation guide](INSTALL.en.md)
 

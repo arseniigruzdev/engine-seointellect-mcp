@@ -1,4 +1,4 @@
-[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (affiliate)
+[engine.seointellect.ru](https://engine.seointellect.ru/?r=15408pNzMH) (affiliate link)
 
 # Installing SEO Intellect MCP
 
