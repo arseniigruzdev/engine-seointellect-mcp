@@ -7,7 +7,7 @@ SEO Intellect MCP is an independent open-source adapter that exposes all 22 SEO 
 ## Requirements
 
 - Node.js 20 or newer;
-- an [SEO Intellect](https://engine.seointellect.ru/?r=15408pNzMH) account and API token;
+- an SEO Intellect account and API token;
 - an MCP client supporting stdio or Streamable HTTP.
 
 ## Installation

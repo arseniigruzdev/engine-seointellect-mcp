@@ -7,7 +7,7 @@ SEO Intellect MCP — независимый open-source адаптер, кот�
 ## Требования
 
 - Node.js 20 или новее;
-- аккаунт [SEO Intellect](https://engine.seointellect.ru/?r=15408pNzMH) и API-токен;
+- аккаунт SEO Intellect и API-токен;
 - MCP-клиент с поддержкой stdio или Streamable HTTP.
 
 ## Установка
