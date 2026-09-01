@@ -79,6 +79,28 @@ npm start
 
 The process communicates over stdio and does not open a network port.
 
+## Request frequency and result polling
+
+The Engine SEO Intellect API executes tasks asynchronously. The MCP server calls `check` and `get` automatically until the result is ready.
+
+- The default polling interval is **15 seconds** (`15000` ms).
+- Do not reduce the interval below 15 seconds: during live verification, polling every 2 seconds caused HTTP `429 Too Many Attempts` responses.
+- Run tasks sequentially, especially when they share one API token. Avoid starting several heavy tasks at once.
+- `wait_for_result=true` waits for the result inside the current MCP call.
+- `wait_for_result=false` returns `task_id` immediately without polling.
+- The standard result timeout is 120 seconds. If the task is still running, the MCP returns `pending` with `task_id`; pass that `task_id` to the same tool to continue waiting without creating a new task.
+- `seo_text`, `headers`, `copywriter_brief`, and other heavy tools may need `timeout_ms` between `180000` and `300000`. The MCP client's tool timeout must be longer than this value.
+- After HTTP 429, stop retrying, wait at least 60 seconds, and retry once. Rapid retry loops only extend the throttling period.
+
+Global defaults can be configured in `.env`:
+
+```dotenv
+SEOINTELLECT_POLL_INTERVAL_MS=15000
+SEOINTELLECT_RESULT_TIMEOUT_MS=120000
+```
+
+Per-tool `poll_interval_ms` and `timeout_ms` values override the global defaults.
+
 ## Docker and remote MCP
 
 Use BYOK mode for a public deployment: every caller supplies their own Engine SEO Intellect token and the server does not persist it.
